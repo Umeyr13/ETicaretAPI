@@ -1,9 +1,11 @@
 ﻿
 using ETicaretAPI.Application.Abstractions.Services;
+using ETicaretAPI.Application.Abstractions.Services.Configurations;
 using ETicaretAPI.Application.Abstractions.Stroge;
 using ETicaretAPI.Application.Abstractions.Token;
 using ETicaretAPI.Infrastructure.Enums;
 using ETicaretAPI.Infrastructure.Services;
+using ETicaretAPI.Infrastructure.Services.Configurations;
 using ETicaretAPI.Infrastructure.Services.Storage;
 using ETicaretAPI.Infrastructure.Services.Storage.Azure;
 using ETicaretAPI.Infrastructure.Services.Storage.Local;
@@ -25,6 +27,7 @@ namespace ETicaretAPI.Infrastructure
             serviceCollection.AddScoped<IStorageService, StorageService>(); //IStorageService aynı zamanda bir IStorage olduğu için IStorage gelen nesne ne     ise IStorageService e de gelmiş oluyor
             serviceCollection.AddScoped<ITokenHandler, TokenHandler>();
             serviceCollection.AddScoped<IMailService, MailService>();
+            serviceCollection.AddScoped<IApplicationService, ApplicationService>();
         }
 
         public static void AddStorage<T>(this IServiceCollection serviceCollection) where T : Storage, IStorage // IStorage ı implemente eden ve Storage sınıfından türeyen bütün  sınıflar buraya verilebilir dedik...
